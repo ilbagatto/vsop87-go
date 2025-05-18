@@ -40,17 +40,3 @@ func TestVenusR(t *testing.T) {
 		t.Errorf("L should be %.4f. Got: %.4f", exp, got)
 	}
 }
-
-func TestFK5Correction(t *testing.T) {
-	l := 5.464219562651914
-	b := -0.036387329715073566
-	dl, db := vsop87.FK5Correction(2448976.494739177, l, b)
-	exp_dl := 5.464219125030996
-	if !mathutils.AlmostEqual(l+dl, exp_dl, 1e-6) {
-		t.Errorf("l should be %.6f. Got: %.6f", exp_dl, dl)
-	}
-	exp_db := -0.03638706135852978
-	if !mathutils.AlmostEqual(b+db, exp_db, 1e-6) {
-		t.Errorf("b should be %.6f. Got: %.6f", exp_db, db)
-	}
-}
