@@ -1,4 +1,3 @@
-// internal/sun/sun.go
 package sun
 
 import (
@@ -39,4 +38,24 @@ func Apparent(jd, deltaPsi float64) (l, b, r float64) {
 	l, b, r = Geometric(jd)
 	l = mathutils.ReduceRad(l + heliocentric.AberrationEcl(r, b) + deltaPsi)
 	return
+}
+
+// Rect2000 calculate equatorial rectangular coordinates of the Sun referred
+// to the standard equinox of J2000.
+// jd is the Standard Julian Day
+func Rect2000(jd float64) mathutils.Point3D {
+	tau := (jd - timeutils.J2000) / 365250 // centuries since J2000
+	sph := mathutils.Spherical{
+		R:     vsop87.ComputeSeries(tau, generated.Earth2000_R),
+		Theta: vsop87.ComputeSeries(tau, generated.Earth2000_B),
+		Phi:   vsop87.ComputeSeries(tau, generated.Earth2000_L)}
+	sph.R = -sph.R
+	sph.Phi = mathutils.ReduceRad(sph.Phi)
+	rct := sph.ToRectangular() // rectangular ecliptic coordinates
+	// transform into the equatorial FK5 reference frame
+	return mathutils.Point3D{
+		X: rct.X + 0.00000044036*rct.Y - 0.000000190919*rct.Z,
+		Y: -0.000000479966*rct.X + 0.917482137087*rct.Y - 0.397776982902*rct.Z,
+		Z: 0.397776982902*rct.Y + 0.917482137087*rct.Z,
+	}
 }

@@ -11,6 +11,17 @@ func AlmostEqual(a, b, threshold float64) bool {
 	return math.Abs(a-b) <= threshold
 }
 
+// Fractional part of a number.
+//
+// It uses the standard [math.Modf] function.
+// The result always keeps sign of the argument.
+//
+//	Frac(-5.5) = -0.5
+func Frac(x float64) float64 {
+	_, f := math.Modf(x)
+	return f
+}
+
 // Polynome calculates polynome:
 //
 //	a1 + a2*t + a3*t*t + a4*t*t*t...
@@ -39,13 +50,27 @@ func Degrees(rad float64) float64 {
 	return rad * _RAD_DEG
 }
 
-// ReduceRad normalizes an angle to the range [0, 2π).
-func ReduceRad(x float64) float64 {
-	x = math.Mod(x, 2*math.Pi)
-	if x < 0 {
-		x += 2 * math.Pi
+func ToRange(x float64, r float64) float64 {
+	z := math.Mod(x, r)
+	if z < 0 {
+		return z + r
 	}
-	return x
+	return z
+}
+
+// Reduces hours to range 0 >= x < 24
+func ReduceHours(hours float64) float64 {
+	return ToRange(hours, 24)
+}
+
+// Reduces arc-degrees to range 0 >= x < 360
+func ReduceDeg(deg float64) float64 {
+	return ToRange(deg, 360)
+}
+
+// Reduces radians to range 0 >= x < 2 * pi
+func ReduceRad(rad float64) float64 {
+	return ToRange(rad, Pi2)
 }
 
 // / DiffAngle кeturns the signed angular difference `b - a`, normalized to [-180, 180] degrees.
@@ -66,4 +91,27 @@ func DiffAngle(a, b float64) float64 {
 	}
 
 	return x
+}
+
+// Converts decimal hours to sexagesimal values.
+//
+// If x is < 0, then the first non-zero return value will be negative.
+//
+//	Hms(-0.5) = 0, -30, 0.0
+func Hms(x float64) (hours int, minutes int, seconds float64) {
+	i, f := math.Modf(math.Abs(x))
+	hours = int(i)
+	i, f = math.Modf(f * 60)
+	minutes = int(i)
+	seconds = f * 60
+	if x < 0 {
+		if hours != 0 {
+			hours = -hours
+		} else if minutes != 0 {
+			minutes = -minutes
+		} else if seconds != 0 {
+			seconds = -seconds
+		}
+	}
+	return hours, minutes, seconds
 }

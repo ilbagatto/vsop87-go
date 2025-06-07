@@ -1,4 +1,3 @@
-// internal/heliocentric/Earth.go
 package heliocentric
 
 import (

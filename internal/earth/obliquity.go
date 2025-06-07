@@ -1,5 +1,4 @@
-// internal/sun/obliquity.go
-package precnut
+package earth
 
 import (
 	"github.com/ilbagatto/vsop87-go/internal/mathutils"

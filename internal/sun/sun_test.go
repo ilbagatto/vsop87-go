@@ -48,3 +48,18 @@ func TestApparentL(t *testing.T) {
 		t.Errorf("Apparent L should be %.6f. Got: %.6f", exp, got)
 	}
 }
+
+func TestRect2000(t *testing.T) {
+	const jd = 2448908.5 // 1992 October 13.0 TD
+	exp := mathutils.Point3D{X: -0.9373959, Y: -0.31316793, Z: -0.13577924}
+	got := sun.Rect2000(jd)
+	if !mathutils.AlmostEqual(got.X, exp.X, threshold) {
+		t.Errorf("X should be %.4f. Got: %.4f", exp.X, got.X)
+	}
+	if !mathutils.AlmostEqual(got.Y, exp.Y, threshold) {
+		t.Errorf("Y should be %.4f. Got: %.4f", exp.Y, got.Y)
+	}
+	if !mathutils.AlmostEqual(got.Z, exp.Z, threshold) {
+		t.Errorf("Z should be %.4f. Got: %.4f", exp.Z, got.Z)
+	}
+}

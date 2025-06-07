@@ -1,4 +1,4 @@
-package precnut
+package earth
 
 import (
 	"math"

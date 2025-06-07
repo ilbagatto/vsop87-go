@@ -35,3 +35,67 @@ func TestLongPolynome(t *testing.T) {
 		t.Errorf("Expected: %.6f, got: %.6f", exp, got)
 	}
 }
+
+func TestReduceHoursPositive(t *testing.T) {
+	if !mathutils.AlmostEqual(mathutils.ReduceHours(49.5), 1.5, 1e-6) {
+		t.Errorf("49.5 should be reduced to 1.5")
+	}
+}
+
+func TestReduceHoursNegative(t *testing.T) {
+	if !mathutils.AlmostEqual(mathutils.ReduceHours(-0.5), 23.5, 1e-6) {
+		t.Errorf("-0.5 should be reduced to 23.5")
+	}
+}
+
+func TestReduceDegPositive(t *testing.T) {
+	if !mathutils.AlmostEqual(mathutils.ReduceDeg(324070.45), 70.45, 1e-6) {
+		t.Errorf("324070.45 should be reduced to 70.45")
+	}
+}
+
+func TestReduceDegNegative(t *testing.T) {
+	if !mathutils.AlmostEqual(mathutils.ReduceHours(-700), 20, 1e-6) {
+		t.Errorf("-700 should be reduced to 20")
+	}
+}
+
+func TestReduceRadPositive(t *testing.T) {
+	if !mathutils.AlmostEqual(mathutils.ReduceRad(12.89), 0.323629385640829, 1e-6) {
+		t.Errorf("12.89 should be reduced to 0.323629385640829")
+	}
+}
+
+func TestReduceRadNegative(t *testing.T) {
+	if !mathutils.AlmostEqual(mathutils.ReduceRad(-12.89), 5.95955592153876, 1e-6) {
+		t.Errorf("-12.89 should be reduced to 5.95955592153876")
+	}
+}
+
+func TestPositiveSexagesimal(t *testing.T) {
+	h, m, s := mathutils.Hms(20.75833333333333)
+	if h != 20 {
+		t.Errorf("Expected: %d, got: %d", 20, h)
+	}
+	if m != 45 {
+		t.Errorf("Expected: %d, got: %d", 45, m)
+	}
+	if !mathutils.AlmostEqual(s, 30, 1e-6) {
+		t.Errorf("Expected: %f, got: %f", 30.0, s)
+	}
+
+}
+
+func TestNegativeSexagesimal(t *testing.T) {
+	h, m, s := mathutils.Hms(-20.75833333333333)
+	if h != -20 {
+		t.Errorf("Expected: %d, got: %d", -20, h)
+	}
+	if m != 45 {
+		t.Errorf("Expected: %d, got: %d", 45, m)
+	}
+	if !mathutils.AlmostEqual(s, 30, 1e-6) {
+		t.Errorf("Expected: %f, got: %f", 30.0, s)
+	}
+
+}
