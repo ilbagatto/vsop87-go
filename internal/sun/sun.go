@@ -20,10 +20,10 @@ func lbr(jd float64) (l, b, r float64) {
 	return
 }
 
-// Geometric returns the geocentric geometric ecliptic coordinates of the Sun
+// geometric returns the geocentric geometric ecliptic coordinates of the Sun
 // for a given Julian Day jd. It converts Earth's coordinates to Sun's.
 // l : longitude (radians), b : latitude (radians), r : distance (AU).
-func Geometric(jd float64) (l, b, r float64) {
+func geometric(jd float64) (l, b, r float64) {
 	l, b, r = lbr(jd)
 	// convert from Earth to Sun-centred: add π and invert latitude
 	l = mathutils.ReduceRad(l + math.Pi)
@@ -34,10 +34,14 @@ func Geometric(jd float64) (l, b, r float64) {
 // Apparent returns the apparent geocentric ecliptic coordinates of the Sun
 // for a given Julian Day jd. deltaPsi is the nutation in longitude (radians).
 // Applies aberration and optional nutation.
-func Apparent(jd, deltaPsi float64) (l, b, r float64) {
-	l, b, r = Geometric(jd)
-	l = mathutils.ReduceRad(l + heliocentric.AberrationEcl(r, b) + deltaPsi)
-	return
+func Apparent(jd, deltaPsi float64) heliocentric.EclCoord {
+	l, b, r := geometric(jd)
+	//l = mathutils.ReduceRad(l + heliocentric.AberrationEcl(r, b) + deltaPsi)
+	return heliocentric.EclCoord{
+		Lambda: mathutils.ReduceRad(l + heliocentric.AberrationEcl(r, b) + deltaPsi),
+		Beta:   b,
+		Radius: r,
+	}
 }
 
 // Rect2000 calculate equatorial rectangular coordinates of the Sun referred

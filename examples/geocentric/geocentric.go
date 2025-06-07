@@ -7,6 +7,7 @@ import (
 	"github.com/ilbagatto/vsop87-go/internal/heliocentric"
 	"github.com/ilbagatto/vsop87-go/internal/mathutils"
 	"github.com/ilbagatto/vsop87-go/internal/moon"
+	"github.com/ilbagatto/vsop87-go/internal/pluto"
 	"github.com/ilbagatto/vsop87-go/internal/sun"
 	"github.com/ilbagatto/vsop87-go/package/utils"
 )
@@ -39,13 +40,15 @@ func main() {
 	deltaPsi, _ := earth.Nutation(jd)
 
 	fmt.Printf("Geocentric ecliptic coordinates for JD=%.6f\n\n", jd)
-	moon_l, moon_b, moon_r := moon.Apparent(jd, deltaPsi)
-	printPosition("Moon", heliocentric.EclCoord{Lambda: moon_l, Beta: moon_b, Radius: utils.KmToAU(moon_r)})
-	sun_l, sun_b, sun_r := sun.Apparent(jd, deltaPsi)
-	printPosition("Sun", heliocentric.EclCoord{Lambda: sun_l, Beta: sun_b, Radius: sun_r})
+	moo := moon.Apparent(jd, deltaPsi)
+	printPosition("Moon", moo)
+	sun := sun.Apparent(jd, deltaPsi)
+	printPosition("Sun", sun)
 	for _, body := range bodies {
 		// Compute appgeocentric ecliptic coordinates (Lambda, Beta, R)
 		ecl := heliocentric.ApparentGeocentric(jd, body, deltaPsi)
 		printPosition(body.Name(), ecl)
 	}
+	plu := pluto.Apparent(jd, deltaPsi)
+	printPosition("Pluto", plu)
 }

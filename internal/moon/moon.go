@@ -1,11 +1,12 @@
-// internal/moon/moon.go
 package moon
 
 import (
 	"math"
 
+	"github.com/ilbagatto/vsop87-go/internal/heliocentric"
 	"github.com/ilbagatto/vsop87-go/internal/mathutils"
 	"github.com/ilbagatto/vsop87-go/internal/timeutils"
+	"github.com/ilbagatto/vsop87-go/package/utils"
 )
 
 // ATerm holds parameters for additive correction terms (Meeus §45).
@@ -194,8 +195,8 @@ func getCoeff(m int, c int, E float64) float64 {
 }
 
 // Apparent computes the Moon's apparent geocentric ecliptic coordinates.
-// Returns lambda (longitude), beta (latitude) in radians, and distance delta in kilometers.
-func Apparent(jd, deltaPsi float64) (lambda, beta, delta float64) {
+// Returns Ecliptical coordinates.
+func Apparent(jd, deltaPsi float64) heliocentric.EclCoord {
 	// centuries since J2000
 	t := (jd - timeutils.J2000) / timeutils.DaysPerCent
 
@@ -248,10 +249,11 @@ func Apparent(jd, deltaPsi float64) (lambda, beta, delta float64) {
 
 	// Final assembly (angles from degrees → radians, + nutation)
 	// convert to radians, add nutation
-	lambda = mathutils.ReduceRad(mathutils.Radians(L+el/1e6) + deltaPsi)
-	beta = mathutils.Radians(eb / 1e6) // latitude in radians
-	delta = 385000.56 + er/1000        // distance in km
-	return
+	return heliocentric.EclCoord{
+		Lambda: mathutils.ReduceRad(mathutils.Radians(L+el/1e6) + deltaPsi),
+		Beta:   mathutils.Radians(eb / 1e6),       // latitude in radians
+		Radius: utils.KmToAU(385000.56 + er/1000), // distance in AU
+	}
 }
 
 // Parallax returns Equatorial horizontal parallax of the Moon.
