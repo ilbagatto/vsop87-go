@@ -9,7 +9,7 @@ import (
 	"github.com/ilbagatto/vsop87-go/internal/pluto"
 	"github.com/ilbagatto/vsop87-go/internal/sun"
 	"github.com/ilbagatto/vsop87-go/mathutils"
-	"github.com/ilbagatto/vsop87-go/package/utils"
+	"github.com/ilbagatto/vsop87-go/utils"
 )
 
 func printPosition(name string, ecl heliocentric.EclCoord) {

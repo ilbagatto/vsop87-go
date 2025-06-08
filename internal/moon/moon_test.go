@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/ilbagatto/vsop87-go/mathutils"
-	"github.com/ilbagatto/vsop87-go/package/utils"
+	"github.com/ilbagatto/vsop87-go/utils"
 )
 
 const threshold = 1e-4

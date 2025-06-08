@@ -5,8 +5,8 @@ import (
 
 	"github.com/ilbagatto/vsop87-go/internal/heliocentric"
 	"github.com/ilbagatto/vsop87-go/mathutils"
-	"github.com/ilbagatto/vsop87-go/package/utils"
 	"github.com/ilbagatto/vsop87-go/timeutils"
+	"github.com/ilbagatto/vsop87-go/utils"
 )
 
 // ATerm holds parameters for additive correction terms (Meeus §45).
