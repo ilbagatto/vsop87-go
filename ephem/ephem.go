@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/ilbagatto/vsop87-go/internal/heliocentric"
+	"github.com/ilbagatto/vsop87-go/internal/moon"
 )
 
 // EclCoord is the facade’s ecliptic‐coordinate type.
@@ -32,3 +33,9 @@ func EclipticPosition(body Body, jd, deltaPsi float64) (EclCoord, error) {
 	}
 	return comp.Compute(jd, deltaPsi), nil
 }
+
+// Node returns the Moon’s mean (trueNode=false) or true (trueNode=true)
+// ascending node longitude (radians) for the given Julian Day.
+//
+// It’s just an alias of internal/moon.Node.
+var Node = moon.Node

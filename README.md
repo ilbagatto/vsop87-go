@@ -73,6 +73,15 @@ func main() {
 
 ```
 
+```go
+import "github.com/ilbagatto/vsop87-go/ephem"
+
+func main() {
+    nd := ephem.Node(2451545.0, true)
+    fmt.Println("Moon’s true node at J2000:", nd)
+}
+```
+
 ### Public Packages & API
 
 #### `ephemeris`
