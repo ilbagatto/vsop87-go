@@ -3,8 +3,8 @@ package coco_test
 import (
 	"testing"
 
-	"github.com/ilbagatto/vsop87-go/internal/coco"
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/coco"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 func TestAstrometric2000ToMean(t *testing.T) {

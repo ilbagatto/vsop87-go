@@ -3,7 +3,7 @@ package pluto
 import (
 	"testing"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 const jd = 2448908.5 // 1992 October 13.0 TD

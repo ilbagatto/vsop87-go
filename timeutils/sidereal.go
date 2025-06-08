@@ -10,7 +10,7 @@ package timeutils
 import (
 	"math"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 const SOLAR_TO_SIDEREAL = 1.002737909350795

@@ -3,7 +3,7 @@ package vsop87
 import (
 	"math"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 //go:generate go run ../../cmd/gen_vsop/main.go -in ../../data/vsop87d.yaml -out generated

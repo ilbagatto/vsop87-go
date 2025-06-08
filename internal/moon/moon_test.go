@@ -3,7 +3,7 @@ package moon
 import (
 	"testing"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 	"github.com/ilbagatto/vsop87-go/package/utils"
 )
 

@@ -3,8 +3,8 @@ package earth_test
 import (
 	"testing"
 
-	"github.com/ilbagatto/vsop87-go/internal/earth"
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/earth"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 const threshold = 1e-6

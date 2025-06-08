@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 
-	"github.com/ilbagatto/vsop87-go/internal/earth"
+	"github.com/ilbagatto/vsop87-go/earth"
 	"github.com/ilbagatto/vsop87-go/internal/heliocentric"
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
 	"github.com/ilbagatto/vsop87-go/internal/moon"
 	"github.com/ilbagatto/vsop87-go/internal/pluto"
 	"github.com/ilbagatto/vsop87-go/internal/sun"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 	"github.com/ilbagatto/vsop87-go/package/utils"
 )
 

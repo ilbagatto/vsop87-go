@@ -3,9 +3,9 @@ package vsop87_test
 import (
 	"testing"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
 	"github.com/ilbagatto/vsop87-go/internal/vsop87"
 	"github.com/ilbagatto/vsop87-go/internal/vsop87/generated"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 const threshold = 1e-4

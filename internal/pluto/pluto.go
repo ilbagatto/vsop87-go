@@ -3,11 +3,11 @@ package pluto
 import (
 	"math"
 
-	"github.com/ilbagatto/vsop87-go/internal/coco"
+	"github.com/ilbagatto/vsop87-go/coco"
 	"github.com/ilbagatto/vsop87-go/internal/heliocentric"
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
 	"github.com/ilbagatto/vsop87-go/internal/sun"
-	"github.com/ilbagatto/vsop87-go/internal/timeutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
+	"github.com/ilbagatto/vsop87-go/timeutils"
 )
 
 // sine and cosine of the mean obliquity of the ecliptic at epoch J2000

@@ -15,7 +15,7 @@
 // http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html.
 package timeutils
 
-import "github.com/ilbagatto/vsop87-go/internal/mathutils"
+import "github.com/ilbagatto/vsop87-go/mathutils"
 
 var historicalData = map[int]float64{
 	// From J.Meeus, Astronomical Algorithms, 2 edition

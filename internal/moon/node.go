@@ -3,8 +3,8 @@ package moon
 import (
 	"math"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
-	"github.com/ilbagatto/vsop87-go/internal/timeutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
+	"github.com/ilbagatto/vsop87-go/timeutils"
 )
 
 func assemble(t float64, terms []float64) float64 {

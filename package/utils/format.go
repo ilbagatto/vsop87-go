@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 var Zodiac = [12]string{"Ari", "Tau", "Gem", "Can", "Leo", "Vir", "Lib", "Sco", "Sag", "Cap", "Aqu", "Pis"}

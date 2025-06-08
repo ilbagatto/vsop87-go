@@ -4,10 +4,10 @@ import (
 	"math"
 
 	"github.com/ilbagatto/vsop87-go/internal/heliocentric"
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
-	"github.com/ilbagatto/vsop87-go/internal/timeutils"
 	"github.com/ilbagatto/vsop87-go/internal/vsop87"
 	"github.com/ilbagatto/vsop87-go/internal/vsop87/generated"
+	"github.com/ilbagatto/vsop87-go/mathutils"
+	"github.com/ilbagatto/vsop87-go/timeutils"
 )
 
 // lbr computes the Earth's VSOP87 series for a given Julian Day jd.

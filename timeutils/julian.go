@@ -8,7 +8,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 // Julian day for 1900 Jan. 0.5

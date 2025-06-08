@@ -3,7 +3,7 @@ package coco
 import (
 	"math"
 
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 // TransformDirection обозначает направление преобразования координат:

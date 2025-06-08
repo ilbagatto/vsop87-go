@@ -1,8 +1,8 @@
 package earth
 
 import (
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
-	"github.com/ilbagatto/vsop87-go/internal/timeutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
+	"github.com/ilbagatto/vsop87-go/timeutils"
 )
 
 const approx_eps = 23.43929111111111

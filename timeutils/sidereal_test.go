@@ -3,9 +3,9 @@ package timeutils_test
 import (
 	"testing"
 
-	"github.com/ilbagatto/vsop87-go/internal/earth"
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
-	"github.com/ilbagatto/vsop87-go/internal/timeutils"
+	"github.com/ilbagatto/vsop87-go/earth"
+	"github.com/ilbagatto/vsop87-go/mathutils"
+	"github.com/ilbagatto/vsop87-go/timeutils"
 )
 
 type _SidTestCase struct {

@@ -1,7 +1,7 @@
 package mathutils_test
 
 import (
-	"github.com/ilbagatto/vsop87-go/internal/mathutils"
+	"github.com/ilbagatto/vsop87-go/mathutils"
 )
 
 type coords3DPair struct {

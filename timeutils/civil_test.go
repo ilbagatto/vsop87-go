@@ -3,7 +3,7 @@ package timeutils_test
 import (
 	"testing"
 
-	"github.com/ilbagatto/vsop87-go/internal/timeutils"
+	"github.com/ilbagatto/vsop87-go/timeutils"
 )
 
 func TestLeapYears(t *testing.T) {
