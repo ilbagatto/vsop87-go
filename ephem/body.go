@@ -1,6 +1,6 @@
 package ephem
 
-import "github.com/ilbagatto/vsop87-go/internal/heliocentric"
+import "fmt"
 
 // Body — all celestial bodies
 type Body int
@@ -18,13 +18,23 @@ const (
 	Pluto
 )
 
-// bodyToOrbit maps public Body → internal Heliocentric for the eight planets.
-var bodyToHeliocentric = map[Body]heliocentric.Heliocentric{
-	Mercury: heliocentric.Mercury{},
-	Venus:   heliocentric.Venus{},
-	Mars:    heliocentric.Mars{},
-	Jupiter: heliocentric.Jupiter{},
-	Saturn:  heliocentric.Saturn{},
-	Uranus:  heliocentric.Uranus{},
-	Neptune: heliocentric.Neptune{},
+var bodyNames = []string{
+	"Moon",
+	"Sun",
+	"Mercury",
+	"Venus",
+	"Mars",
+	"Jupiter",
+	"Saturn",
+	"Uranus",
+	"Neptune",
+	"Pluto",
+}
+
+// String implements fmt.Stringer.
+func (b Body) String() string {
+	if int(b) < 0 || int(b) >= len(bodyNames) {
+		return fmt.Sprintf("Body(%d)", b)
+	}
+	return bodyNames[b]
 }
