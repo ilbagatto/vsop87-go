@@ -24,7 +24,7 @@ var Registry = map[Body]Computer{
 	Pluto:   plutoWrapper{},
 }
 
-// EclipticPosition returns the apparent ecliptic coordinates (lambda, beta, distance) of any body.
+// EclipticPosition returns the apparent ecliptic geocentric coordinates (lambda, beta, distance) of any body.
 func EclipticPosition(body Body, jd, deltaPsi float64) (EclCoord, error) {
 	comp, ok := Registry[body]
 	if !ok {
