@@ -1,14 +1,35 @@
 # VSOP87-Go
 
-**VSOP87-Go** is a pure-Go library for high-precision ephemeris calculations, based on Jean Meeus’s _Astronomical Algorithms_ (2nd ed.) and the VSOP87 series. It provides:
+- [VSOP87-Go](#vsop87-go)
+	- [Status](#status)
+	- [Installation](#installation)
+	- [Quickstart](#quickstart)
+		- [Public Packages \& API](#public-packages--api)
+			- [`ephemeris`](#ephemeris)
+			- [`mathutils`](#mathutils)
+			- [`timeutils`](#timeutils)
+			- [`utils`](#utils)
+			- [`coco`](#coco)
+			- [`earth`](#earth)
+	- [Specification](#specification)
+	- [Roadmap (short)](#roadmap-short)
+	- [License](#license)
+
+
+**VSOP87-Go** is a pure-Go library for high-precision ephemeris calculations, based on Jean Meeus's _Astronomical Algorithms_ (2nd ed.) and the VSOP87 series. It provides:
 
 - **Geocentric** coordinates (lambda. beta, distance) for all major planets and Pluto.  
 - **Geocentric** and **apparent** ecliptic coordinates (accounts for light-time, nutation, aberration) for planets, the Sun, and the Moon.  
 - Utility packages for polynomials, date/time, angle math, obliquity, etc.
 
 **Data sources**  
-- VSOP87 data downloaded from IMCCE’s repository via [github.com/ctdk/vsop87](https://github.com/ctdk/vsop87).  
+- VSOP87 data downloaded from IMCCE's repository via [github.com/ctdk/vsop87](https://github.com/ctdk/vsop87).  
 - Algorithms and truncated series from Jean Meeus, _Astronomical Algorithms_, 2nd edition.
+
+## Status
+
+Early **v0.1 draft**. Public API is small and may evolve; internal packages are not stable. See the spec below for what is considered stable.
+
 
 ## Installation
 
@@ -105,6 +126,16 @@ Misc. utilities, like formatting
 Obliqutity of the ecliptic, nutation:
 - `Nutation(jd) → (Δψ, Δε)`
 
+
+## Specification
+
+For math assumptions, frames, data sources, units/precision, and the stable API surface, see  
+[docs/lib-spec.md](docs/lib-spec.md).
+
+## Roadmap (short)
+
+* Publish regression tests and benchmarks.
+* Optional output frames (J2000/of-date switch).
 
 ## License
 
