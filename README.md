@@ -18,7 +18,7 @@
 
 **VSOP87-Go** is a pure-Go library for high-precision ephemeris calculations, based on Jean Meeus's _Astronomical Algorithms_ (2nd ed.) and the VSOP87 series. It provides:
 
-- **Geocentric** coordinates (lambda. beta, distance) for all major planets and Pluto.  
+- **Geocentric** coordinates (lambda, beta, distance) for all major planets and Pluto.  
 - **Geocentric** and **apparent** ecliptic coordinates (accounts for light-time, nutation, aberration) for planets, the Sun, and the Moon.  
 - Utility packages for polynomials, date/time, angle math, obliquity, etc.
 
@@ -130,7 +130,7 @@ Obliqutity of the ecliptic, nutation:
 ## Specification
 
 For math assumptions, frames, data sources, units/precision, and the stable API surface, see  
-[docs/lib-spec.md](docs/lib-spec.md).
+[docs/lib-spec.md](docs/spec.md).
 
 ## Roadmap (short)
 
