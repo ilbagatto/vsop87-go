@@ -28,7 +28,7 @@
 
 ## Status
 
-Early **v0.1 draft**. Public API is small and may evolve; internal packages are not stable. See the spec below for what is considered stable.
+Early **v0.1.1 draft**. Public API is small and may evolve; internal packages are not stable. See the spec below for what is considered stable.
 
 
 ## Installation
@@ -93,6 +93,8 @@ func main() {
 }
 
 ```
+
+To get coordinates along with velocity, use `EclipticPositionWithVelocity` function instead, from the same package.
 
 ```go
 import "github.com/ilbagatto/vsop87-go/ephem"

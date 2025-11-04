@@ -1,6 +1,7 @@
 package mathutils_test
 
 import (
+	"math"
 	"testing"
 
 	"github.com/ilbagatto/vsop87-go/mathutils"
@@ -98,4 +99,27 @@ func TestNegativeSexagesimal(t *testing.T) {
 		t.Errorf("Expected: %f, got: %f", 30.0, s)
 	}
 
+}
+
+func TestAngNormPi_KnownValues(t *testing.T) {
+	const eps = 1e-12
+	tcs := []struct {
+		in  float64
+		out float64
+	}{
+		{0, 0},
+		{math.Pi, math.Pi},        // π stays π (right-closed interval)
+		{-math.Pi, math.Pi},       // -π maps to +π (interval is (-π, π])
+		{3 * math.Pi, math.Pi},    // 3π → π
+		{-3 * math.Pi, math.Pi},   // -3π → π
+		{10, -2.5663706143591725}, // 10 rad → ~ -2.56637
+		{-10, 2.5663706143591725}, // -10 rad → ~ +2.56637
+	}
+
+	for _, tc := range tcs {
+		got := mathutils.AngNormPi(tc.in)
+		if !mathutils.AlmostEqual(got, tc.out, eps) {
+			t.Fatalf("AngNormPi(%.15f): got %.15f, want %.15f", tc.in, got, tc.out)
+		}
+	}
 }

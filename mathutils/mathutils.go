@@ -93,6 +93,18 @@ func DiffAngle(a, b float64) float64 {
 	return x
 }
 
+// angNorm180 normalizes an angle to (-π, π] degrees.
+func AngNormPi(x float64) float64 {
+	x = math.Mod(x, Pi2)
+	if x <= -math.Pi {
+		x += Pi2
+	}
+	if x > math.Pi {
+		x -= Pi2
+	}
+	return x
+}
+
 // Converts decimal hours to sexagesimal values.
 //
 // If x is < 0, then the first non-zero return value will be negative.
