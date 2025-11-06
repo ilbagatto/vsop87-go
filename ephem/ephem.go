@@ -86,12 +86,14 @@ func EclipticPositionWithVelocity(body Body, jdTT float64) (EclCoord, float64, e
 func ppLambda(p EclCoord) float64 { return p.Lambda }
 
 // stepFor picks a numerical step (in days) per body for a stable derivative.
-func stepFor(b Body) float64 {
-	switch b {
+func stepFor(body Body) float64 {
+	switch body {
 	case Moon:
-		return 1.0 / 720.0 // 2 minutes
+		return 1.0 / 720.0 // 2 min
+	case Mercury, Venus, Sun, Mars:
+		return 1.0 / 96.0 // 15 min
 	default:
-		return 1.0 / 96.0 // 15 minutes
+		return 1.0 / 24.0 // 1 h
 	}
 }
 
