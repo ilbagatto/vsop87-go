@@ -76,8 +76,8 @@ func EclipticPositionWithVelocity(body Body, jdTT float64) (EclCoord, float64, e
 		return EclCoord{}, 0, err
 	}
 
-	// central difference (deg/day), angle-safe
-	v := centralDiffDeg(ppLambda(pp), ppLambda(pm), h)
+	// central difference (radians/day), angle-safe
+	v := centralDiffRad(ppLambda(pp), ppLambda(pm), h)
 
 	return p0, v, nil
 }
@@ -97,9 +97,9 @@ func stepFor(body Body) float64 {
 	}
 }
 
-// centralDiffDeg computes an angular derivative (radians/day) using central difference.
+// centralDiffRad computes an angular derivative (radians/day) using central difference.
 // It wraps the difference through (-π, π] to avoid 0/(2π)) discontinuity.
-func centralDiffDeg(lonPlus, lonMinus, h float64) float64 {
+func centralDiffRad(lonPlus, lonMinus, h float64) float64 {
 	d := mathutils.AngNormPi(lonPlus - lonMinus)
 	return d / (2 * h)
 }
