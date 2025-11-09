@@ -11,7 +11,7 @@ import (
 )
 
 func printPosition(body ephem.Body, ecl ephem.EclCoord, vel float64) {
-	fmt.Printf("%-8s %s %s %7.4f %7.4f\n",
+	fmt.Printf("%-10s %s %s %7.4f %7.4f\n",
 		body.String(),
 		utils.FormatZodiac(mathutils.Degrees(ecl.Lambda)),
 		utils.FormatLatDms(mathutils.Degrees(ecl.Beta)),
@@ -21,7 +21,7 @@ func printPosition(body ephem.Body, ecl ephem.EclCoord, vel float64) {
 }
 
 func main() {
-	jd := 2451545.0 // J2000.0
+	jd := 2438792.990277 // 2451545.0 // J2000.0
 
 	// list of all bodies we want
 	bodies := []ephem.Body{
@@ -44,4 +44,11 @@ func main() {
 		}
 		printPosition(b, coord, vel)
 	}
+
+	lng, vel := ephem.NodePositionWithVelocity(jd, true)
+	fmt.Printf("True Node  %s %s   ---   %7.4f\n",
+		utils.FormatZodiac(mathutils.Degrees(lng)),
+		utils.FormatLatDms(mathutils.Degrees(0)),
+		mathutils.Degrees(vel),
+	)
 }

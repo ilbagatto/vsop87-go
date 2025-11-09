@@ -82,6 +82,22 @@ func EclipticPositionWithVelocity(body Body, jdTT float64) (EclCoord, float64, e
 	return p0, v, nil
 }
 
+// NodePositionWithVelocity returns the Moon’s ascending node longitude (radians)
+// and signed daily speed (radians/day) at the given JD(TT).
+// trueNode defines whether to use the true or mean node.
+func NodePositionWithVelocity(jdTT float64, trueNode bool) (float64, float64) {
+	h := 1.0 / 96.0 // 15 minutes; adequate for smooth derivative
+
+	// base and ±h values (radians)
+	n0 := moon.Node(jdTT, trueNode)
+	np := moon.Node(jdTT+h, trueNode)
+	nm := moon.Node(jdTT-h, trueNode)
+
+	// central difference (radians/day)
+	v := centralDiffRad(np, nm, h)
+	return n0, v
+}
+
 // ppLambda extracts longitude in degrees (rename if your field is different).
 func ppLambda(p EclCoord) float64 { return p.Lambda }
 
