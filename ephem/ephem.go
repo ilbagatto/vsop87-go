@@ -49,7 +49,9 @@ func EclipticPosition(body Body, jd, deltaPsi float64) (EclCoord, error) {
 // It uses a small central-difference step and angle-safe normalization.
 // EclipticPositionWithVelocity returns geocentric ecliptic coordinates (of date)
 // and signed daily longitudinal speed (radians/day) at the given JD(TT).
+// It uses analytic speed where supported (currently: Moon), otherwise numeric.
 func EclipticPositionWithVelocity(body Body, jdTT float64) (EclCoord, float64, error) {
+
 	h := stepFor(body)
 
 	// local helper: compute position at given JD(TT) with proper nutation
@@ -67,6 +69,14 @@ func EclipticPositionWithVelocity(body Body, jdTT float64) (EclCoord, float64, e
 	if err != nil {
 		return EclCoord{}, 0, err
 	}
+	// Analytic branch where supported
+	switch body {
+	case Moon:
+		vDeg := moon.AngularSpeed(jdTT, false)
+		v := mathutils.Radians(vDeg)
+		return p0, v, nil
+	}
+
 	pp, err := getPos(jdTT + h)
 	if err != nil {
 		return EclCoord{}, 0, err

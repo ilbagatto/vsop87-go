@@ -18,7 +18,8 @@ func TestBodyVelocities(t *testing.T) {
 		exp  float64 // expected velocity (rad/day)
 	}{
 		{"Sun", Sun, 0.017717152050096274},
-		{"Moon", Moon, 0.2097337478209127},
+		//{"Moon", Moon, 0.2097337478209127}, // numeric
+		{"Moon", Moon, 0.209722261990}, // analytical
 		{"Venus", Venus, 0.0218339059072008},
 		{"Saturn", Saturn, 0.0020254091724432044},
 		{"Uranus", Uranus, -0.0006107162107227282},

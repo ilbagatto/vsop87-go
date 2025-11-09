@@ -6,6 +6,7 @@
   - [Time Scales \& ΔT](#time-scales--δt)
   - [Sources \& Models](#sources--models)
   - [Units \& Precision](#units--precision)
+  - [Angular Velocities](#angular-velocities)
   - [Public API Surface (stable)](#public-api-surface-stable)
   - [Assumptions \& Limits](#assumptions--limits)
 
@@ -44,6 +45,13 @@ This document defines frames, reductions, data sources, time scales, units/preci
 - Time: **Julian Day** in **TT** and/or **UT**, as appropriate.
 - Suggested printing precision (for downstream tools):  
   λ, β, ε — 9 decimal places; r — 9 decimal places; JD — 6 decimal places.
+
+## Angular Velocities
+
+VSOP87-GO also provides daily angular velocities (dλ/dt) for all supported bodies.
+All planets use numerical central difference on apparent longitudes to stay fully consistent with the positional model.
+
+The Moon’s velocity is computed analytically using the series from Jean Meeus, Astronomical Formulae for Calculators (4th ed.), giving an accuracy better than ±0.005°/day while avoiding redundant position evaluations.
 
 ## Public API Surface (stable)
 The following packages/types are considered **public and stable** (names illustrative; align to current code):
