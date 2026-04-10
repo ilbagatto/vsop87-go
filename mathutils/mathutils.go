@@ -73,10 +73,8 @@ func ReduceRad(rad float64) float64 {
 	return ToRange(rad, Pi2)
 }
 
-// / DiffAngle кeturns the signed angular difference `b - a`, normalized to [-180, 180] degrees.
-// /
-// / This accounts for circular wrap-around (e.g., from 359° to 1°),
-// / and is useful when determining the direction and amount of angular motion.
+// DiffAngle returns the minimal unsigned angular distance between a and b
+// in degrees, normalized to the range [0, 180].
 func DiffAngle(a, b float64) float64 {
 	var x float64
 
