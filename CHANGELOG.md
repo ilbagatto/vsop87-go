@@ -6,3 +6,5 @@
 ## [v0.1.1] - 2025-11-04
 - Wrapper function which returns velocities along with the body position.
 
+## [v0.1.2] - 2026-04-11
+- SignedDiffAngle function.

@@ -123,3 +123,29 @@ func TestAngNormPi_KnownValues(t *testing.T) {
 		}
 	}
 }
+
+// TestSignedDiffAngle verifies shortest signed angular differences across
+// direct and wrap-around cases.
+func TestSignedDiffAngle(t *testing.T) {
+	tests := []struct {
+		name string
+		a    float64
+		b    float64
+		want float64
+	}{
+		{name: "forward", a: 10, b: 40, want: 30},
+		{name: "backward", a: 40, b: 10, want: -30},
+		{name: "wrap forward", a: 350, b: 10, want: 20},
+		{name: "wrap backward", a: 10, b: 350, want: -20},
+		{name: "opposition", a: 0, b: 180, want: 180},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := mathutils.SignedDiffAngle(tt.a, tt.b)
+			if got != tt.want {
+				t.Fatalf("SignedDiffAngle(%v, %v) = %v, want %v", tt.a, tt.b, got, tt.want)
+			}
+		})
+	}
+}

@@ -91,6 +91,16 @@ func DiffAngle(a, b float64) float64 {
 	return x
 }
 
+// SignedDiffAngle returns the signed shortest angular shift from a to b
+// in degrees, normalized to the range [-180, 180].
+func SignedDiffAngle(a, b float64) float64 {
+	d := ReduceDeg(b - a)
+	if d > 180 {
+		d -= 360
+	}
+	return d
+}
+
 // angNorm180 normalizes an angle to (-π, π] degrees.
 func AngNormPi(x float64) float64 {
 	x = math.Mod(x, Pi2)
